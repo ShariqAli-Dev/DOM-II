@@ -5,6 +5,10 @@ const introP = document.querySelector('.intro p');
 
 let keydownArray = [];
 
+let scale = 0;
+
+const contentImage = document.querySelector('.img-content img');
+console.log(contentImage);
 
 // ### Mouseover ### // 
 introImg.addEventListener('mouseover', event => {
@@ -28,12 +32,28 @@ document.addEventListener('keydown', event => {
 
 
 // ### Wheel ### //
+introImg.addEventListener('wheel', event => {
+  event.preventDefault();
+  scale += event.deltaY * -0.01;
+  scale = Math.min(Math.max(.125, scale), 4);
+  introImg.style.transform = `scale(${scale})`;
+});
 
 
 // ### Load ### //
+window.addEventListener('load', () => {
+  console.log('Page has loaded');
+  alert('Page has loaded');
+})
 
 
 // ### Focus ### //
+contentImage.addEventListener('focus', event => {
+  console.log(event);
+  event.target.style.color = 'white';
+  contentImage.src = 'https://www.seattleaquarium.org/sites/default/files/images/sea%20otter.png';
+  console.log(contentImage);
+})
 
 
 // ### Resize ### //
