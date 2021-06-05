@@ -8,7 +8,8 @@ let keydownArray = [];
 let scale = 0;
 
 const contentImage = document.querySelector('.img-content img');
-console.log(contentImage);
+
+const mainNavigation = document.querySelector('.main-navigation');
 
 // ### Mouseover ### // 
 introImg.addEventListener('mouseover', event => {
@@ -57,6 +58,10 @@ contentImage.addEventListener('focus', event => {
 
 
 // ### Resize ### //
+window.addEventListener('resize', () => {
+  mainNavigation.style.backgroundColor = 'red';
+  console.log('Because you resized, the nav menue is now red!')
+})
 
 
 // ### Scroll ### //
