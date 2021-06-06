@@ -1,17 +1,8 @@
-// ### Variables ### //
+// ### Mouseover ### // 
 const introImg = document.querySelector('.intro img');
 const introH2 = document.querySelector('.intro h2');
 const introP = document.querySelector('.intro p');
 
-let keydownArray = [];
-
-let scale = 0;
-
-const contentImage = document.querySelector('.img-content img');
-
-const mainNavigation = document.querySelector('.main-navigation');
-
-// ### Mouseover ### // 
 introImg.addEventListener('mouseover', event => {
   introImg.src = 'https://i.ytimg.com/vi/v_cpPMjE0vU/maxresdefault.jpg';
   introImg.alt = 'picture of the cutest panda ever';
@@ -24,6 +15,8 @@ introImg.addEventListener('mouseover', event => {
 
 // ### Keydown ###
 // tracks keypresses, every 5 there is an alert message. the keypresses are saved to an array and every 5 in an array there is included a space
+let keydownArray = [];
+
 document.addEventListener('keydown', event => {
   keydownArray.push(event.key);
   if((keydownArray.length % 5 === 0) && (keydownArray.length !== 0)) {
@@ -33,6 +26,8 @@ document.addEventListener('keydown', event => {
 
 
 // ### Wheel ### //
+let scale = 0;
+
 introImg.addEventListener('wheel', event => {
   event.preventDefault();
   scale += event.deltaY * -0.01;
@@ -49,6 +44,8 @@ window.addEventListener('load', () => {
 
 
 // ### Focus ### //
+const contentImage = document.querySelector('.img-content img');
+
 contentImage.addEventListener('focus', event => {
   console.log(event);
   event.target.style.color = 'white';
@@ -58,13 +55,52 @@ contentImage.addEventListener('focus', event => {
 
 
 // ### Resize ### //
+const mainNavigation = document.querySelector('.main-navigation');
+
 window.addEventListener('resize', () => {
   mainNavigation.style.backgroundColor = 'red';
-  console.log('Because you resized, the nav menue is now red!')
+  console.log('Because you resized, the nav menue is now red!');
 })
 
 
 // ### Scroll ### //
+createNavA = () => {
+  let newAnchor = document.createElement('a');
+  newAnchor.textContent = 'Ello Mate!';
+  newAnchor.classList.add('nav-link');
+  newAnchor.href = '#';
+  newAnchor.textContent = 'testContent';
+  document.querySelector('nav').prepend(newAnchor);
+  return newAnchor;
+}
+
+let newAnchor = createNavA();
+console.log(newAnchor);
+let windowHeight = window.outerHeight + window.innerHeight;
+new Kursor({
+  type: 0,
+  removeDefaultCursor: true
+});
+
+document.addEventListener('scroll', () => {
+  console.log(window.scrollY / 5);
+  // if (0 > window.scroolY < windowheight *1/5)
+  if((window.scrollY > 0) && (window.scrollY < (windowHeight / 5))) {
+    changedCorsour.type = 1;
+  }
+  else if((window.scrollY > 0) && (window.scrollY < (windowHeight * 2 / 5 ))) {
+    changedCorsour.type = 2;
+  }
+  else if((window.scrollY > 0) && (window.scrollY < (windowHeight * 3 / 5 ))) {
+    changedCorsour.type = 3;
+  }
+  else if((window.scrollY > 0) && (window.scrollY < (windowHeight * 4 / 5 ))) {
+    changedCorsour.type = 4;
+  }
+  else if((window.scrollY > 0) && (window.scrollY < windowHeight)) {
+    changedCorsour.type = 5;
+  }
+})
 
 
 // ### Select ### //
