@@ -104,6 +104,20 @@ document.addEventListener('scroll', () => {
 
 
 // ### Select ### //
+let inputButton = document.createElement('input');
+inputButton.value = 'OWA OWA OWA OWA';
+let inputP = document.createElement('p');
+inputP.id = 'log';
+const textContentDiv = document.querySelector('.text-content');
+textContentDiv.prepend(inputButton, inputP)
+
+document.querySelector('input').addEventListener('select', event => {
+  console.log(event);
+  const selectedItems = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
+  console.log
+  inputButton.value = selectedItems;
+  inputButton.style.color = 'red';
+});
 
 
 // ### dbClick ### //
