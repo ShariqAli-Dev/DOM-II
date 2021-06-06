@@ -75,7 +75,6 @@ createNavA = () => {
 }
 
 let newAnchor = createNavA();
-console.log(newAnchor);
 let windowHeight = window.outerHeight + window.innerHeight;
 new Kursor({
   type: 0,
@@ -121,6 +120,16 @@ document.querySelector('input').addEventListener('select', event => {
 
 
 // ### dbClick ### //
+const notSusButton = document.createElement('button')
+notSusButton.textContent = 'Press Me If You Dare';
+notSusButton.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+document.querySelector('nav').prepend(notSusButton);
+console.log(notSusButton);
+
+notSusButton.addEventListener('dbClick', () => {
+  window.location = this.href;
+});
 
 
 // ### Drag / Drop ### //
