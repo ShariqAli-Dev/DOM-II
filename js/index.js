@@ -71,6 +71,35 @@ document.addEventListener('scroll', event => {
   }, 10000)
 });
 
+
+// ### Select ### //
+let inputButton = document.createElement('input');
+inputButton.value = 'OWA OWA OWA OWA';
+let inputP = document.createElement('p');
+inputP.id = 'log';
+const textContentDiv = document.querySelector('.text-content');
+textContentDiv.prepend(inputButton, inputP)
+
+document.querySelector('input').addEventListener('select', event => {
+  console.log(event);
+  const selectedItems = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
+  console.log
+  inputButton.value = selectedItems;
+  inputButton.style.color = 'red';
+});
+
+// ### dbClick ### //
+const notSusButton = document.createElement('button')
+notSusButton.textContent = 'Press Me If You Dare';
+notSusButton.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+document.querySelector('nav').prepend(notSusButton);
+console.log(notSusButton);
+
+notSusButton.addEventListener('dbClick', () => {
+  window.location = this.href;
+});
+
 // ### Drag / Drop ### //
 let dragContainer = document.createElement('div');
 // dragContainer.classList.add('drag-container');
