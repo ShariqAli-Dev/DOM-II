@@ -64,7 +64,6 @@ window.addEventListener('resize', () => {
 })
 
 
-/* 
 // ### Scroll ### //
 createNavA = () => {
   let newAnchor = document.createElement('a');
@@ -103,7 +102,7 @@ document.addEventListener('scroll', () => {
   }
 })
 
-*/
+
 // ### Select ### //
 let inputButton = document.createElement('input');
 inputButton.value = 'OWA OWA OWA OWA';
