@@ -83,7 +83,6 @@ textContentDiv.prepend(inputButton, inputP)
 document.querySelector('input').addEventListener('select', event => {
   console.log(event);
   const selectedItems = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
-  console.log
   inputButton.value = selectedItems;
   inputButton.style.color = 'red';
 });
