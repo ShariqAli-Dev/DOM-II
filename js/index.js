@@ -19,9 +19,10 @@ let keydownArray = [];
 
 document.addEventListener('keydown', event => {
   keydownArray.push(event.key);
-  if((keydownArray.length % 5 === 0) && (keydownArray.length !== 0)) {
+  if((keydownArray.length % 5 === 0) && (keydownArray.length > 0)) {
     alert(`You have pressed a total of ${keydownArray.length} keys. Which are: \n ${keydownArray}`);
   }
+  console.log(event);
 })
 
 
@@ -63,6 +64,7 @@ window.addEventListener('resize', () => {
 })
 
 
+/* 
 // ### Scroll ### //
 createNavA = () => {
   let newAnchor = document.createElement('a');
@@ -101,7 +103,7 @@ document.addEventListener('scroll', () => {
   }
 })
 
-
+*/
 // ### Select ### //
 let inputButton = document.createElement('input');
 inputButton.value = 'OWA OWA OWA OWA';
@@ -125,7 +127,6 @@ notSusButton.textContent = 'Press Me If You Dare';
 notSusButton.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 document.querySelector('nav').prepend(notSusButton);
-console.log(notSusButton);
 
 notSusButton.addEventListener('dbClick', () => {
   window.location = this.href;
@@ -133,5 +134,92 @@ notSusButton.addEventListener('dbClick', () => {
 
 
 // ### Drag / Drop ### //
+let dragContainer = document.createElement('div');
+// dragContainer.classList.add('drag-container');
+
+let p1 = document.createElement('p');
+// p1.classList.add('draggable');
+p1.draggable = 'true';
+p1.textContent = '1';
+
+let p2 = document.createElement('p');
+// p2.classList.add('draggable');
+p2.draggable = 'true';
+p2.textContent = '2';
+
+let p3 = document.createElement('p');
+// p3.classList.add('draggable');
+p3.draggable = 'true';
+p3.textContent = '3';
+
+let p4 = document.createElement('p');
+// p4.classList.add('draggable');
+p4.draggable = 'true';
+p4.textContent = '4';
+
+// CSS COMPONENTS FOR DIV AND P //
+dragContainer.style.backgroundColor = 'dimgray';
+dragContainer.style.padding = '1rem';
+dragContainer.style.marginTop = '1rem';
+
+p1.style.padding = '1rem';
+p1.style.backgroundColor = 'white';
+p1.style.border = '1px solid black';
+p1.style.cursor = 'move';
+
+p2.style.padding = '1rem';
+p2.style.backgroundColor = 'white';
+p2.style.border = '1px solid black';
+p2.style.cursor = 'move';
+
+p3.style.padding = '1rem';
+p3.style.backgroundColor = 'white';
+p3.style.border = '1px solid black';
+p3.style.cursor = 'move';
+
+p4.style.padding = '1rem';
+p4.style.backgroundColor = 'white';
+p4.style.border = '1px solid black';
+p4.style.cursor = 'move';
+
+// cloning dragContanier --> dragContainer2
+let dragContainer2 = dragContainer.cloneNode(true);
+
+// appending p1 p2 to containerDiv
+dragContainer.append(p1);
+dragContainer.append(p2);
+dragContainer2.append(p3);
+dragContainer2.append(p4);
+
+// appending to document
+let body = document.querySelector('body');
+body.append(dragContainer, dragContainer2);
+
+
+// Funcationality to JS Dom Elements [drag/drop]
+let draggableElementsArray = [p1, p2, p3, p4];
+let containersArray = [dragContainer, dragContainer2];
+
+// checking if the event is being dragged
+draggableElementsArray.forEach(element => {
+  element.addEventListener('dragstart', () => {
+    element.classList.add('beingDragged');
+  });
+
+  element.addEventListener('dragend', () => {
+    element.classList.remove('beingDragged');
+  });
+});
+
+// Placing element into array
+containersArray.forEach(container => {
+  container.addEventListener('dragover', event => {
+    event.preventDefault();
+    let draggableElement = document.querySelector('.beingDragged');
+    container.appendChild(draggableElement);
+  });
+});
+
+
 
 
