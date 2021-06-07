@@ -65,72 +65,11 @@ window.addEventListener('resize', () => {
 
 
 // ### Scroll ### //
-createNavA = () => {
-  let newAnchor = document.createElement('a');
-  newAnchor.textContent = 'Ello Mate!';
-  newAnchor.classList.add('nav-link');
-  newAnchor.href = '#';
-  newAnchor.textContent = 'testContent';
-  document.querySelector('nav').prepend(newAnchor);
-  return newAnchor;
-}
-
-let newAnchor = createNavA();
-let windowHeight = window.outerHeight + window.innerHeight;
-new Kursor({
-  type: 0,
-  removeDefaultCursor: true
+document.addEventListener('scroll', event => {
+  setInterval(() => {
+    console.log(`Your Mouse's Y Position: ${window.scrollY}`);
+  }, 10000)
 });
-
-document.addEventListener('scroll', () => {
-  console.log(window.scrollY / 5);
-  // if (0 > window.scroolY < windowheight *1/5)
-  if((window.scrollY > 0) && (window.scrollY < (windowHeight / 5))) {
-    changedCorsour.type = 1;
-  }
-  else if((window.scrollY > 0) && (window.scrollY < (windowHeight * 2 / 5 ))) {
-    changedCorsour.type = 2;
-  }
-  else if((window.scrollY > 0) && (window.scrollY < (windowHeight * 3 / 5 ))) {
-    changedCorsour.type = 3;
-  }
-  else if((window.scrollY > 0) && (window.scrollY < (windowHeight * 4 / 5 ))) {
-    changedCorsour.type = 4;
-  }
-  else if((window.scrollY > 0) && (window.scrollY < windowHeight)) {
-    changedCorsour.type = 5;
-  }
-})
-
-
-// ### Select ### //
-let inputButton = document.createElement('input');
-inputButton.value = 'OWA OWA OWA OWA';
-let inputP = document.createElement('p');
-inputP.id = 'log';
-const textContentDiv = document.querySelector('.text-content');
-textContentDiv.prepend(inputButton, inputP)
-
-document.querySelector('input').addEventListener('select', event => {
-  console.log(event);
-  const selectedItems = event.target.value.substring(event.target.selectionStart, event.target.selectionEnd);
-  console.log
-  inputButton.value = selectedItems;
-  inputButton.style.color = 'red';
-});
-
-
-// ### dbClick ### //
-const notSusButton = document.createElement('button')
-notSusButton.textContent = 'Press Me If You Dare';
-notSusButton.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-
-document.querySelector('nav').prepend(notSusButton);
-
-notSusButton.addEventListener('dbClick', () => {
-  window.location = this.href;
-});
-
 
 // ### Drag / Drop ### //
 let dragContainer = document.createElement('div');
